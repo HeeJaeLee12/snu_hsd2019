@@ -162,7 +162,7 @@ void FPGA::convLowering(const std::vector<std::vector<std::vector<std::vector<fl
     for(int rgb = 0; rgb < input_channel; rgb++){
       for(int h = 0; h < conv_height; h++) {
         for(int w = 0; w < conv_width; w++) {
-          new_weight[c][rgb * conv_height * conv_width + h * conv_width + w] = cnn_weights[c][rgb][h][w];
+          new_weights[c][rgb * conv_height * conv_width + h * conv_width + w] = cnn_weights[c][rgb][h][w];
         }
       }
     }
