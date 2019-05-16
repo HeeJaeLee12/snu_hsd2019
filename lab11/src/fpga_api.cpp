@@ -149,8 +149,6 @@ void FPGA::convLowering(const std::vector<std::vector<std::vector<std::vector<fl
   // For example,
   // new_weights[0][0] = cnn_weights[0][0][0][0];
   // new_inputs[0][0] = inputs[0][0][0];
-
-
   for(int c = 0; c < conv_channel; c++) {
     for(int rgb = 0; rgb < input_channel; rgb++){
       for(int h = 0; h < conv_height; h++) {
@@ -160,18 +158,18 @@ void FPGA::convLowering(const std::vector<std::vector<std::vector<std::vector<fl
       }
     }
   }
-  for (int rgb = 0; rgb < input_channel; rgb++) {
-    for(int a = 0; a < input_height - conv_height + 1; a++){
-      for(int b = 0; b < input_width - conv_width + 1; b++) {
-        for(int h = a; h < conv_height + a; h++) {
-          for(int w = b; w < conv_width + b; w++) {
-
-            new_inputs[a * (input_width - conv_width + 1) + b][rgb * conv_height * conv_width + (h - a) * conv_width + (w - b)] = inputs[rgb][a + h][b + w];
-          }
-        }
-      }
-    }
-  }
+  // for (int rgb = 0; rgb < input_channel; rgb++) {
+  //   for(int a = 0; a < input_height - conv_height + 1; a++){
+  //     for(int b = 0; b < input_width - conv_width + 1; b++) {
+  //       for(int h = a; h < conv_height + a; h++) {
+  //         for(int w = b; w < conv_width + b; w++) {
+  //
+  //           new_inputs[a * (input_width - conv_width + 1) + b][rgb * conv_height * conv_width + (h - a) * conv_width + (w - b)] = inputs[rgb][a + h][b + w];
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
 
 
 }
